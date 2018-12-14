@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.example.dao.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.yc.example.entity.Department">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="org" jdbcType="INTEGER" property="org" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="director" jdbcType="VARCHAR" property="director" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="property" jdbcType="INTEGER" property="property" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="phone_extension" jdbcType="VARCHAR" property="phoneExtension" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, org, pid, name, code, director, short_name, property, phone, phone_extension, 
+    mail, remark, fax, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_department
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_department
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.example.entity.Department">
+    insert into tb_department (id, org, pid, 
+      name, code, director, 
+      short_name, property, phone, 
+      phone_extension, mail, remark, 
+      fax, status)
+    values (#{id,jdbcType=INTEGER}, #{org,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{director,jdbcType=VARCHAR}, 
+      #{shortName,jdbcType=VARCHAR}, #{property,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{phoneExtension,jdbcType=VARCHAR}, #{mail,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.example.entity.Department">
+    insert into tb_department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="org != null">
+        org,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="director != null">
+        director,
+      </if>
+      <if test="shortName != null">
+        short_name,
+      </if>
+      <if test="property != null">
+        property,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="phoneExtension != null">
+        phone_extension,
+      </if>
+      <if test="mail != null">
+        mail,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="org != null">
+        #{org,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="director != null">
+        #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null">
+        #{property,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneExtension != null">
+        #{phoneExtension,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null">
+        #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.example.entity.Department">
+    update tb_department
+    <set>
+      <if test="org != null">
+        org = #{org,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="director != null">
+        director = #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        short_name = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null">
+        property = #{property,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneExtension != null">
+        phone_extension = #{phoneExtension,jdbcType=VARCHAR},
+      </if>
+      <if test="mail != null">
+        mail = #{mail,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.example.entity.Department">
+    update tb_department
+    set org = #{org,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      director = #{director,jdbcType=VARCHAR},
+      short_name = #{shortName,jdbcType=VARCHAR},
+      property = #{property,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      phone_extension = #{phoneExtension,jdbcType=VARCHAR},
+      mail = #{mail,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yc.sql.entity.Department">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_dept
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_dept
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yc.sql.entity.Department">
+    insert into tb_dept (id, name)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yc.sql.entity.Department">
+    insert into tb_dept
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yc.sql.entity.Department">
+    update tb_dept
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yc.sql.entity.Department">
+    update tb_dept
+    set name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
