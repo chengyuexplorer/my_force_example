@@ -1,0 +1,54 @@
+spring:
+  datasource:
+    username: root
+    password: 123
+    url: jdbc:mysql://localhost:3306/my_force_example?useSSL=false&useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+    #   定义自己的数据源：切换数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+#   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+
+
+  resources:
+              static-locations: classpath:/static/,classpath:/templates/
+
+  mvc:
+      view:
+        prefix: classpath:/templates/
+        suffix: .html
+      static-path-pattern: /static/**
+
+
+
+#mybatis配置
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mappers/*.xml
+
+#pageHelper配置
+pagehelper:
+  helper-dialect: mysql
+
+#  分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页，
+#  pageNum>pages（超过总数时），会查询最后一页。默认false 时，直接根据参数进行查询。
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql
